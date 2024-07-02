@@ -42,8 +42,8 @@ df_query = spark.sql("""
                         a.search_term AS anchor,
                         b.product_name_th AS positive,
                         b.product_id
-                     FROM playground_prod.gd_events.mart_search_term_results a
-                     INNER JOIN prod.sv_aurora_major_merchant_vw.product_a_d b
+                     FROM firebase_search_history a
+                     INNER JOIN product_table b
                         ON STRING(a.menu_id) = STRING(b.product_id)
                      """).toPandas()
 
@@ -53,7 +53,7 @@ df_query = spark.sql("""
 df_corpus = spark.sql("""
                       SELECT DISTINCT 
                       product_id, merchant_id, product_name_en, product_name_th, product_description_th, product_description_en, product_photo
-                      FROM prod.sv_aurora_major_merchant_vw.product_a_d
+                      FROM product_table
                       WHERE product_photo IS NOT NULL AND product_price > 0
                       """).toPandas()
 
@@ -77,7 +77,7 @@ while df_query[df_query['negatives'] == df_query['product_id']].shape[0] > 0:
 # COMMAND ----------
 
 train_dataset = Dataset.from_pandas(
-    spark.table('playground_prod.ml_semantic_search.training_data').toPandas())
+    spark.table('training_data').toPandas())
 
 # COMMAND ----------
 
