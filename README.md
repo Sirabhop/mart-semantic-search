@@ -31,6 +31,7 @@ mart-semantic-search
    ```
 3. **Model Selection and Fine-tuning:**
   - Explore and select the best sentence transformer model in models from 20+ models available on HuggingFace.
+
 | file_label | validation_language | Accuracy@10 | Precision@10 | Recall@10 | MRR@10 | NDCG@10 | MAP@100 |
 |------------|---------------------|-------------|--------------|-----------|--------|---------|---------|
 | rbh-mart-miniLM-L12 | TH+EN | 82.22% | 25.27% | 13.52% | 59.55% | 28.98% | 16.33% |
@@ -67,6 +68,7 @@ mart-semantic-search
 | msmarco-distilbert-base-v4 | EN | 91.89% | 25.68% | 20.08% | 47.09% | 26.40% | 22.44% |
 | msmarco-roberta-base-v3 | EN | 86.49% | 23.51% | 18.62% | 46.00% | 25.03% | 18.74% |
 | msmarco-distilbert-multilingual-en-de-v2-tmp-lng-aligned | EN | 54.05% | 13.51% | 10.38% | 25.75% | 14.04% | 8.87% |
+
   - The winning model is `sirabhop/mart-multilingual-semantic-search-miniLM-L12`
 
 4. **Deployment:**
